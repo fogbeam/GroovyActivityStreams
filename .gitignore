@@ -32,7 +32,7 @@
 
 # "temporary" build files
 /target
-
+/dist
 /bin
 
 # other
