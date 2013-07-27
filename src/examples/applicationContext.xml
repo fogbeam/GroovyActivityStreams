@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/aop 
+        					http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+        					http://www.springframework.org/schema/beans 
+        					http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+        					http://www.springframework.org/schema/context 
+        					http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+        					http://www.springframework.org/schema/jee 
+        					http://www.springframework.org/schema/jee/spring-jee-3.0.xsd   
+        					http://www.springframework.org/schema/tx 
+        					http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<beans:bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <beans:property name="messageConverters">
+        	<beans:list>
+            
+	            <beans:bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+    	        <beans:bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            
+            
+        	    <!--  Use this stuff insteaad, if you want to serialize as XML 	
+            		<beans:bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+                		<beans:property name="marshaller" ref="jaxbMarshaller"/>
+                		<beans:property name="unmarshaller" ref="jaxbMarshaller"/>
+            		</beans:bean>
+                
+                	<beans:bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+ 	           		<beans:bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+    	        
+ 				-->
+ 
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+ 	
+ 	<!-- If you want to use XML instead  -->
+ 	<!--
+	<beans:bean id="jaxbMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+    	<beans:property name="classesToBeBound">
+        	<beans:list>
+	        	<beans:value>org.fogbeam.protocol.activitystreams.ActivityStreamEntry</beans:value>    	            	
+        	</beans:list>
+    	</beans:property>
+	</beans:bean>
+	-->
+	
+</beans:beans>
+        
