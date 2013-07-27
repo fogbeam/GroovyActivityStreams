@@ -1,0 +1,168 @@
+
+
+
+Activity Streams Working Group                                  J. Snell
+                                                                     IBM
+                                                           June 20, 2012
+
+
+              Priority Extension for JSON Activity Streams
+
+Abstract
+
+   This specification describes the "priority" extension for JSON
+   Activity Streams.
+
+
+Table of Contents
+
+   1.  The "priority" property . . . . . . . . . . . . . . . . . . . . 2
+   2.  Normative References  . . . . . . . . . . . . . . . . . . . . . 3
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . . . 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Snell                                                           [Page 1]
+
+                             ActivityStreams                   June 2012
+
+
+1.  The "priority" property
+
+   Priority is an indicator of the relative priority or importance that
+   the generator of an "activity" object considers the activity to have.
+   Represented in JSON as a property called "priority" whose value is a
+   numeric decimal between 0.00 and 1.00.  If the property is omitted,
+   or explicitly set to a value of null, the assumption is that no
+   explicit priority or importance can be assumed.  All other values
+   falling between 0.0 and 1.0 indicate relatively increasing priority.
+
+   For example:
+
+     {
+       "actor": {"displayName": "Joe"},
+       "verb": "post",
+       "object": {
+         "objectType": "note",
+         ...
+       },
+       "priority": 0.75
+     }
+
+   Note that the presence of the "priority" property is intended only to
+   communicate the intended relative importance of the activity from the
+   generators point of view and does not impose any specific processing
+   or display requirements on the part of any entity consuming the
+   activity stream.
+
+   Expressing the value as a range of numeric decimal values is intended
+   to provide the greatest level of flexibility in the expression and
+   consumption of prioritization detail.  It is expected that
+   implementors consuming activity streams containing "priority" will
+   utilize and expose the additional information in a number of
+   different ways depending on the unique requirements of each
+   application use case.
+
+   Many existing systems do not typically represent priority values as
+   numeric ranges.  Such systems typically use fixed, labeled brackets
+   such as "low", "normal" and "high" or "urgent".  Similar mechanisms
+   can be established, by convention, when using the "priority"
+   property.  In typical use, it is RECOMMENDED that implementations
+   wishing to work with such defined categories treat "priority"
+   property values in the range 0.00 to 0.25 as "low" priority; values
+   greater than 0.25 to 0.75 as "normal" priority; and values greater
+   than 0.75 to 1.00 as "high" priority.  Specific implementations are
+   free to establish alternative conventions for the grouping of
+   priority values with the caveat that such conventions might not be
+   understood by all implementations.
+
+
+
+Snell                                                           [Page 2]
+
+                             ActivityStreams                   June 2012
+
+
+2.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+
+Author's Address
+
+   James M Snell
+   IBM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Snell                                                           [Page 3]
+
