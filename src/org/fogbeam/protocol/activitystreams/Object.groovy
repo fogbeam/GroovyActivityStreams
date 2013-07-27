@@ -14,6 +14,12 @@ class Object
 	@XmlElement
 	String id;
 	@XmlElement
+	String content;
+	@XmlElement
+	String summary;
+	@XmlElement
+	String displayName;
+	@XmlElement
 	String objectType;
 	
 	public String toString()
